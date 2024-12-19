@@ -1,4 +1,4 @@
-# Lab2
+*# Lab2
 
 # `Greedy Algorithms`
 
@@ -11,20 +11,6 @@
 
 ```cpp
 #include <bits/stdc++.h>
-/*
-11
-1 4
-3 5
-0 6
-5 7
-3 8
-5 9
-6 10
-8 11
-8 12
-2 13
-12 14
-*/
 using namespace std;
 bool comp(pair<int, pair<int, int>> a, pair<int, pair<int, int>> b)
 {
@@ -150,3 +136,4 @@ Yes It Can be:12
 1 0
 */
 ```
+*

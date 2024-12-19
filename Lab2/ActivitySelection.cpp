@@ -1,18 +1,5 @@
 #include <bits/stdc++.h>
-/*
-11
-1 4
-3 5
-0 6
-5 7
-3 8
-5 9
-6 10
-8 11
-8 12
-2 13
-12 14
-*/
+
 using namespace std;
 bool comp(pair<int, pair<int, int>> a, pair<int, pair<int, int>> b)
 {
@@ -32,14 +19,22 @@ int main()
         i++;
     }
     sort(activity.begin(), activity.end(), comp);
-    // for (auto it : activity)
-    // {
-    //     cout << it.first << " " << it.second.first << " " << it.second.second << endl;
-    // }To Print Sorted List
+    for (auto it : activity)
+    {
+        cout << it.first << " " << it.second.first << " " << it.second.second << endl;
+    }
+    // To Print Sorted List
     vector<int> ans;
     ans.push_back(activity[0].first);
     int curr = 0;
-    for (i = 2; i < activity.size(); i++)
+    for (i = 17
+2 4
+1 9
+2 8
+4 6
+6 8
+5 6
+5 12; i < activity.size(); i++)
     {
         if (activity[curr].second.second <= activity[i].second.first)
         {
