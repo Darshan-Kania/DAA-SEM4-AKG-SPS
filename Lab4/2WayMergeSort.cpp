@@ -9,6 +9,7 @@ void Merge(vector<int> &a, int low, int mid, int high)
     vector<int> B;
     while (i <= mid && j <= high)
     {
+        ++cnt;
         if (a[i] < a[j])
         {
             B.push_back(a[i]);
@@ -22,10 +23,12 @@ void Merge(vector<int> &a, int low, int mid, int high)
     }
     for (; i <= mid; i++)
     {
+        cnt++;
         B.push_back(a[i]);
     }
     for (; j <= high; j++)
     {
+        cnt++;
         B.push_back(a[j]);
     }
     int x = 0;
@@ -37,7 +40,7 @@ void Merge(vector<int> &a, int low, int mid, int high)
 }
 void MergeSort(vector<int> &v, int low, int high)
 {
-    if (low < high)
+    if (low < high) // && ++cnt)
     {
         int mid = (low + high) / 2;
         MergeSort(v, low, mid);
@@ -45,17 +48,41 @@ void MergeSort(vector<int> &v, int low, int high)
         Merge(v, low, mid, high);
     }
 }
+int Sorted(int n)
+{
+    cnt = 0;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+        v[i] = i + 1;
+    MergeSort(v, 0, n - 1);
+    return cnt;
+}
+int ReverseSorted(int n)
+{
+    cnt = 0;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+        v[i] = n - i;
+    MergeSort(v, 0, n - 1);
+    return cnt;
+}
+int RandomOrder(int n)
+{
+    cnt = 0;
+    vector<int> v(n);
+    srand(time(0));
+    for (int i = 0; i < n; i++)
+        v[i] = rand() % 100;
+    MergeSort(v, 0, n - 1);
+    return cnt;
+}
 int main()
 {
     /*Darshan Kania*/
     int size;
     cin >> size;
-    vector<int> v(size);
-    for (auto &it : v)
-        cin >> it;
-    MergeSort(v, 0, v.size() - 1);
-    for (auto it : v)
-        cout << it << " ";
-    cout << endl;
+    cout << Sorted(size) << endl;
+    cout << ReverseSorted(size) << endl;
+    cout << RandomOrder(size) << endl;
     return 0;
 }
