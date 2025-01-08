@@ -27,14 +27,7 @@ int main()
     vector<int> ans;
     ans.push_back(activity[0].first);
     int curr = 0;
-    for (i = 17
-2 4
-1 9
-2 8
-4 6
-6 8
-5 6
-5 12; i < activity.size(); i++)
+    for (i = 0; i < activity.size(); i++)
     {
         if (activity[curr].second.second <= activity[i].second.first)
         {
