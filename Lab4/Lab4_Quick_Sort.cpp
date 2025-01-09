@@ -8,40 +8,37 @@ using namespace std;
 int comparisonCount = 0;
 int swapCount = 0;
 
-void swap(int &a, int &b)
-{
-    int temp = a;
-    a = b;
-    b = temp;
-    swapCount++;
-}
+#include <iostream>
+#include <vector>
+using namespace std;
 
-int partition(vector<int> &arr, int low, int high)
+// Function to partition the array
+int Partition(vector<int> &A, int p, int r)
 {
-    int pivot = arr[high];
-    int i = low - 1;
+    int x = A[r]; // Pivot element
+    int i = p - 1;
 
-    for (int j = low; j < high; j++)
+    for (int j = p; j < r; j++)
     {
-        comparisonCount++;
-        if (arr[j] <= pivot)
+        if (++comparisonCount && A[j] <= x)
         {
             i++;
-            swap(arr[i], arr[j]);
+            swap(A[i], A[j]);
+            swapCount++;
         }
     }
-    swap(arr[i + 1], arr[high]);
+    swap(A[i + 1], A[r]);
+    swapCount++;
     return i + 1;
 }
 
-void quickSort(vector<int> &arr, int low, int high)
+void QuickSort(vector<int> &A, int p, int r)
 {
-    if (low < high)
+    if (p < r)
     {
-        int pi = partition(arr, low, high);
-
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+        int q = Partition(A, p, r);
+        QuickSort(A, p, q - 1);
+        QuickSort(A, q + 1, r);
     }
 }
 
@@ -52,7 +49,7 @@ pair<int, int> Sorted(int n)
     vector<int> v(n);
     for (int i = 0; i < n; i++)
         v[i] = i + 1;
-    quickSort(v, 0, n - 1);
+    QuickSort(v, 0, n - 1);
     return {comparisonCount, swapCount};
 }
 
@@ -63,7 +60,7 @@ pair<int, int> ReverseSorted(int n)
     vector<int> v(n);
     for (int i = 0; i < n; i++)
         v[i] = n - i;
-    quickSort(v, 0, n - 1);
+    QuickSort(v, 0, n - 1);
     return {comparisonCount, swapCount};
 }
 
@@ -75,7 +72,7 @@ pair<int, int> RandomOrder(int n)
     srand(time(0));
     for (int i = 0; i < n; i++)
         v[i] = rand() % 100;
-    quickSort(v, 0, n - 1);
+    QuickSort(v, 0, n - 1);
     return {comparisonCount, swapCount};
 }
 
