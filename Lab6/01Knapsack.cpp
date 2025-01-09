@@ -1,7 +1,26 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+vector<int> printSolution(vector<vector<int>> dp, vector<pair<int, int>> items)
+{
+    int i = dp.size() - 1;
+    int j = dp[0].size() - 1;
+    vector<int> ans;
+    while (i > 0 && j > 0)
+    {
+        if (dp[i][j] != dp[i - 1][j])
+        {
+            ans.push_back(i);
+            j = j - items[i].first;
+            i--;
+        }
+        else
+        {
+            i--;
+        }
+    }
+    return ans;
+}
 int main()
 {
     /*Darshan Kania*/
@@ -34,5 +53,10 @@ int main()
         cout << endl;
     }
     cout << dp[noItems][capacity] << endl;
+    vector<int> ans = printSolution(dp, items);
+    for (auto &it : ans)
+    {
+        cout << it << " ";
+    }
     return 0;
 }
