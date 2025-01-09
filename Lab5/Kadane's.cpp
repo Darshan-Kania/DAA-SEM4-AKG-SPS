@@ -27,6 +27,7 @@ void Kadane(const vector<int> &v)
     }
     cout << globalMax << " " << startidx << " " << endidx << endl;
 }
+
 int main()
 {
     /*Darshan Kania*/
