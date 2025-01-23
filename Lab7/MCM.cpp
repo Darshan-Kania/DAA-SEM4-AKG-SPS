@@ -16,16 +16,8 @@ void POP(vector<vector<ll>> K, ll i, ll j)
         cout << ")";
     }
 }
-int main()
+void MCM(ll n, vector<vector<ll>> c, vector<vector<ll>> K, vector<ll> p)
 {
-    /*Darshan Kania*/
-    ll n;
-    cin >> n;
-    vector<ll> p(n + 1);
-    for (auto &it : p)
-        cin >> it;
-    vector<vector<ll>> c(n + 1, vector<ll>(n + 1, -1));
-    vector<vector<ll>> K(n + 1, vector<ll>(n + 1, -1));
     for (ll i = 1; i <= n; i++)
     {
         c[i][i] = 0;
@@ -70,5 +62,17 @@ int main()
     cout << c[1][n] << endl;
     cout << "Optimal Parenthesis Order" << endl;
     POP(K, 1, n);
+}
+int main()
+{
+    /*Darshan Kania*/
+    ll n;
+    cin >> n;
+    vector<ll> p(n + 1);
+    for (auto &it : p)
+        cin >> it;
+    vector<vector<ll>> c(n + 1, vector<ll>(n + 1, -1));
+    vector<vector<ll>> K(n + 1, vector<ll>(n + 1, -1));
+    MCM(n, c, K, p);
     return 0;
 }
